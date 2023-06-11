@@ -1,0 +1,12 @@
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\bin\Debug\net6.0\Paintball_Project.Domain.deps.json
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\bin\Debug\net6.0\Paintball_Project.Domain.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\bin\Debug\net6.0\Paintball_Project.Domain.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.csproj.AssemblyReference.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.AssemblyInfoInputs.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.AssemblyInfo.cs
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.csproj.CoreCompileInputs.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\refint\Paintball_Project.Domain.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\Paintball_Project.Domain.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Domain\obj\Debug\net6.0\ref\Paintball_Project.Domain.dll

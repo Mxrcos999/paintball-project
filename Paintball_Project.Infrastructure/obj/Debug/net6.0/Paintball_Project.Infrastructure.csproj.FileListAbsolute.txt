@@ -1,0 +1,15 @@
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Infrastructure.deps.json
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Infrastructure.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Infrastructure.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.AssemblyInfo.cs
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\refint\Paintball_Project.Infrastructure.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\ref\Paintball_Project.Infrastructure.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Domain.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Domain.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.csproj.CopyComplete
