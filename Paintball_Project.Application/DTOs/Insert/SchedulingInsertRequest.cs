@@ -1,9 +1,13 @@
-﻿namespace Paintball_Project.Application.DTOs.Insert;
+﻿using System.ComponentModel.DataAnnotations;
 
-internal class SchedulingInsertRequest
+namespace Paintball_Project.Application.DTOs.Insert;
+
+public sealed class SchedulingInsertRequest
 {
-    public string Name { get; set; }
-    public DateTime DateTimeRegistration { get; set; }
-    public string Phone { get; set; }
-    public int NumberPlayers { get; set; }
+    public PlayerInsertRequest Player { get; set; }
+    [MinLength(8, ErrorMessage = "É nécessario 8 jogadores.")]
+    [Required(ErrorMessage = "Informe o número de jogadores.")]
+    public int NumberPlayer { get; set; }
+    [Required(ErrorMessage = "Informe a data e hora do jogo.")]
+    public DateTime DateHourScheduling { get; set; }
 }

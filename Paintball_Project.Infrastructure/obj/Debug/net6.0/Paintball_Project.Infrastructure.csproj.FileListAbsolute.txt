@@ -13,3 +13,7 @@ C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\o
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Domain.dll
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Domain.pdb
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.csproj.CopyComplete
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Application.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Application.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\bin\Debug\net6.0\Paintball_Project.Infrastructure.runtimeconfig.json
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Infrastructure\obj\Debug\net6.0\Paintball_Project.Infrastructure.genruntimeconfig.cache

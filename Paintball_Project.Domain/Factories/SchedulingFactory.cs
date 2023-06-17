@@ -4,8 +4,8 @@ namespace Paintball_Project.Domain.Factories;
 
 public static class SchedulingFactory
 {
-    public static Scheduling Create(string name, DateTime dateTimeRegistration, string phone, int numberHours, int numberPlayers)
+    public static Scheduling Create(Player player, int numberPlayer, DateTime dateHourScheduling)
     {
-        return new Scheduling(name, dateTimeRegistration, phone, numberPlayers);
+        return new Scheduling(player, numberPlayer, dateHourScheduling);
     }
 }

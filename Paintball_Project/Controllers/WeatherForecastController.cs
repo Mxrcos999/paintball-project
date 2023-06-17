@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Paintball_Project.Application.DTOs.Insert;
+using Paintball_Project.Application.Interfaces.Services;
 
 namespace Paintball_Project.Controllers;
 
@@ -12,10 +14,12 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ISchedulingService _schedulingService;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, ISchedulingService schedulingService)
     {
         _logger = logger;
+        _schedulingService = schedulingService;
     }
 
     [HttpGet("GetAll")]
@@ -28,5 +32,16 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+    [HttpPost("insert")]
+    public async Task<IActionResult> Post([FromBody] SchedulingInsertRequest model)
+    {
+        var result = await _schedulingService.InsertAsync(model);
+
+        if (result == 0)
+            return BadRequest();
+
+        return Ok(result);
+        
     }
 }

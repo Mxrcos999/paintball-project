@@ -4,6 +4,196 @@
     "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project\\Paintball_Project.csproj": {}
   },
   "projects": {
+    "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj",
+        "projectName": "Paintball_Project.Application",
+        "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj",
+        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj": {
+                "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj",
+        "projectName": "Paintball_Project.Domain",
+        "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj",
+        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\Paintball_Project.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\Paintball_Project.Infrastructure.csproj",
+        "projectName": "Paintball_Project.Infrastructure",
+        "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\Paintball_Project.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj": {
+                "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj"
+              },
+              "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj": {
+                "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Domain\\Paintball_Project.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project\\Paintball_Project.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +217,14 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj": {
+                "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Application\\Paintball_Project.Application.csproj"
+              },
+              "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\Paintball_Project.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\marco\\source\\repos\\Paintball_Project\\Paintball_Project.Infrastructure\\Paintball_Project.Infrastructure.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -22,6 +22,33 @@ namespace Paintball_Project.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.Player", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateTimeChange")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateTimeCreating")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("player");
+                });
+
             modelBuilder.Entity("Paintball_Project.Domain.Entities.Scheduling", b =>
                 {
                     b.Property<int>("Id")
@@ -30,29 +57,39 @@ namespace Paintball_Project.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateHourScheduling")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateTimeChange")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("DateTimeCreating")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("DateTimeRegistration")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("NumberHours")
+                    b.Property<int>("NumberPlayer")
                         .HasColumnType("integer");
 
-                    b.Property<int>("NumberPlayers")
+                    b.Property<int>("PlayerId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("schedulings");
+                    b.HasIndex("PlayerId")
+                        .IsUnique();
+
+                    b.ToTable("scheduling");
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.Scheduling", b =>
+                {
+                    b.HasOne("Paintball_Project.Domain.Entities.Player", "Player")
+                        .WithOne()
+                        .HasForeignKey("Paintball_Project.Domain.Entities.Scheduling", "PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_scheduling_player");
+
+                    b.Navigation("Player");
                 });
 #pragma warning restore 612, 618
         }
