@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PaintBall_Project.Api.props" />
+</Project>

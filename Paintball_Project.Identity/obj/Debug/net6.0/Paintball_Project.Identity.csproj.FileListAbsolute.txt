@@ -10,3 +10,8 @@ C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\obj\Deb
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\obj\Debug\net6.0\refint\Paintball_Project.Identity.dll
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\obj\Debug\net6.0\Paintball_Project.Identity.pdb
 C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\obj\Debug\net6.0\ref\Paintball_Project.Identity.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\bin\Debug\net6.0\Paintball_Project.Application.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\bin\Debug\net6.0\Paintball_Project.Domain.dll
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\bin\Debug\net6.0\Paintball_Project.Application.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\bin\Debug\net6.0\Paintball_Project.Domain.pdb
+C:\Users\marco\source\repos\Paintball_Project\Paintball_Project.Identity\obj\Debug\net6.0\Paintball_Project.Identity.csproj.CopyComplete

@@ -11,10 +11,17 @@ public class SchedulingRep : ISchedulingRep
 {
     private readonly PaintBallContext _context;
     private readonly DbSet<Scheduling> _scheduling;
+    private readonly DbSet<SchedulingSettings> _schedulingSettings;
+    private readonly int numberPlayer;
+    private readonly int durationMatch;
+    
     public SchedulingRep(PaintBallContext context)
     {
         _context = context;
         _scheduling = context.Set<Scheduling>();
+        _schedulingSettings = context.Set<SchedulingSettings>();
+        numberPlayer = _schedulingSettings.FirstOrDefault().NumberPlayer;
+        durationMatch = _schedulingSettings.FirstOrDefault().DurationMatch;
     }
 
     public Task<int> DeleteAsync(int id)
@@ -52,12 +59,12 @@ public class SchedulingRep : ISchedulingRep
 
                         var totalPlayersHour = scheduledHours.Sum(a => a.NumberPlayer);
 
-                        if (scheduledHours.Count < 3 && totalPlayersHour < 35)
+                        if (scheduledHours.Count < 3 && totalPlayersHour < numberPlayer)
                         {
                             hoursAvailable.Add(beginHour.ToString("HH:mm"));
                         }
 
-                        beginHour = beginHour.AddHours(1);
+                        beginHour = beginHour.AddHours(durationMatch);
                     }
 
                     daysTimesAvailable.Add(new SchedulingDay
