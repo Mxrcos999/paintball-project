@@ -17,7 +17,7 @@ public class MatchService : IMatchService
 
     public async Task<bool> CreateAsync(MatchInsertRequest match)
     {
-        var matchInsert = MatchFactory.Create(match.Time, match.NumberBalls, match.Price);
+        var matchInsert = MatchFactory.Create(match.Time, match.NumberBalls, match.Price, match.isRecharge);
 
         return await _matchRep.CreateAsync(matchInsert);
     }  

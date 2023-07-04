@@ -5,8 +5,8 @@ namespace Paintball_Project.Application.Interfaces.Services;
 
 public interface ISchedulingService
 {
-    Task<int> InsertAsync(SchedulingInsertRequest request);
-    Task<IEnumerable<SchedulingDay>> GetAsync();
+    Task<DefaultResponse> InsertAsync(SchedulingInsertRequest request);
+    Task<IEnumerable<SchedulingDay>> GetAsync(int mounth, int day);
     Task<int> UpdateAsync(SchedulingInsertRequest request);
     Task<int> DeleteAsync(int id);
 } 

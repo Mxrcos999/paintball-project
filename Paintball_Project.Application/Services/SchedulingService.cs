@@ -14,13 +14,34 @@ public class SchedulingService : ISchedulingService
     {
         _schedulingRep = schedulingRep;
     }
-    public async Task<int> InsertAsync(SchedulingInsertRequest request)
+    public async Task<DefaultResponse> InsertAsync(SchedulingInsertRequest request)
     {
-        var newPlayer = await CreatePlayerAsync(request.Player);
+        var response = new DefaultResponse();
 
-        var scheduling = SchedulingFactory.Create(newPlayer, request.NumberPlayer, request.DateHourScheduling);
-        var idEntity = await _schedulingRep.InsertAsync(scheduling);
-        return idEntity;
+        var schedulings = (await _schedulingRep.GetAsync()).Where(wh => wh.DateHourScheduling == request.DateHourScheduling);
+        if(schedulings.Count() < 3)
+        {
+            var totalPlayers = schedulings?.Sum(s => s.NumberPlayer);
+            var totalPlayersScheduling = totalPlayers + request.NumberPlayer;
+
+            if (totalPlayersScheduling <= 40)
+            {
+                var newPlayer = await CreatePlayerAsync(request.Player);
+
+                var scheduling = SchedulingFactory.Create(newPlayer, request.NumberPlayer, request.DateHourScheduling);
+                var result = await _schedulingRep.InsertAsync(scheduling);
+
+                response.Sucess = result;
+                return response;
+            }
+            response.Sucess = false;
+            response.AddError("O horario selecionado já atingiu o número máximo de jogadores.");
+            return response;
+
+        }
+        response.Sucess = false;
+        response.AddError("O horario selecionado já contém 3 jogos agendados.");
+        return response;
     }
 
     public Task<int> UpdateAsync(SchedulingInsertRequest request)
@@ -28,9 +49,9 @@ public class SchedulingService : ISchedulingService
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<SchedulingDay>> GetAsync()
+    public async Task<IEnumerable<SchedulingDay>> GetAsync(int mounth, int day)
     {
-        return await _schedulingRep.GetAvailableDaysAsync();
+        return await _schedulingRep.GetAvailableDaysAsync(mounth, day);
     }
     public Task<int> DeleteAsync(int id)
     {

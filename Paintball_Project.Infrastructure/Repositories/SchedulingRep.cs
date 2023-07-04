@@ -14,7 +14,7 @@ public class SchedulingRep : ISchedulingRep
     private readonly DbSet<SchedulingSettings> _schedulingSettings;
     private readonly int numberPlayer;
     private readonly int durationMatch;
-    
+
     public SchedulingRep(PaintBallContext context)
     {
         _context = context;
@@ -28,67 +28,78 @@ public class SchedulingRep : ISchedulingRep
     {
         throw new NotImplementedException();
     }
-
-    public async Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync()
+    public async Task<IEnumerable<Scheduling>> GetAsync()
+    {
+        return _scheduling.AsEnumerable();
+    }
+    public async Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync(int mouth, int day)
     {
         var schedulings = _scheduling.AsEnumerable();
+
         var currentYear = DateTime.Now.Year;
-        var monthsAppointments = new List<SchedulingDay>();
 
-        for (var month = 1; month <= 12; month++)
+        var firstDayMonth = new DateTime(currentYear, mouth, 1);
+        var lastDayMonth = firstDayMonth.AddMonths(1).AddDays(-1);
+
+        var daysTimesAvailable = new List<SchedulingDay>();
+
+        if (day >= firstDayMonth.Day && day <= lastDayMonth.Day)
         {
-            var firstDayMonth = new DateTime(currentYear, month, 1);
-            var lastDayMonth = firstDayMonth.AddMonths(1).AddDays(-1);
+            var selectedDate = new DateTime(currentYear, mouth, day);
 
-            var daysTimesAvailable = new List<SchedulingDay>();
+            var beginHour = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, 8, 0, 0);
+            var endHour = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, 21, 0, 0);
 
-            for (var day = firstDayMonth; day <= lastDayMonth; day = day.AddDays(1))
+            var availableHours = new List<string>();
+
+            while (beginHour < endHour)
             {
-                if (day.DayOfWeek != DayOfWeek.Sunday && day.DayOfWeek != DayOfWeek.Saturday)
+                var endHourSlot = beginHour.AddHours(durationMatch);
+
+                var totalPlayersHour = schedulings.Where(a => a.DateHourScheduling >= beginHour && a.DateHourScheduling < beginHour.AddHours(durationMatch));
+                var totalPlayers = totalPlayersHour.Sum(a => a.NumberPlayer);
+
+                if (totalPlayersHour.Count() < 3 && totalPlayers < numberPlayer)
                 {
-                    var beginHour = new DateTime(day.Year, day.Month, day.Day, 8, 0, 0);
-                    var endHour = new DateTime(day.Year, day.Month, day.Day, 20, 0, 0);
-
-                    var hoursAvailable = new List<string>();
-
-                    while (beginHour < endHour)
-                    {
-                        var scheduledHours = schedulings
-                            .Where(a => a.DateHourScheduling >= beginHour && a.DateHourScheduling < beginHour.AddHours(1))
-                            .ToList(); 
-
-                        var totalPlayersHour = scheduledHours.Sum(a => a.NumberPlayer);
-
-                        if (scheduledHours.Count < 3 && totalPlayersHour < numberPlayer)
-                        {
-                            hoursAvailable.Add(beginHour.ToString("HH:mm"));
-                        }
-
-                        beginHour = beginHour.AddHours(durationMatch);
-                    }
-
-                    daysTimesAvailable.Add(new SchedulingDay
-                    {
-                        Mouth = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month),
-                        Year = day.Year,
-                        Day = day.Day,
-                        HoursAvailable = hoursAvailable
-                    });
+                    availableHours.Add(beginHour.ToString("HH:mm"));
                 }
+                beginHour = beginHour.AddHours(durationMatch);
+
+                beginHour = endHourSlot;
             }
 
-            monthsAppointments.AddRange(daysTimesAvailable);
+            daysTimesAvailable.Add(new SchedulingDay
+            {
+                Mouth = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mouth),
+                Year = selectedDate.Year,
+                Day = selectedDate.Day,
+                HoursAvailable = availableHours
+            });
         }
 
-        return monthsAppointments;
+        return daysTimesAvailable;
     }
 
-    public async Task<int> InsertAsync(Scheduling request)
-    {
-        var idEntity = (await _scheduling.AddAsync(request)).Entity.Id;
-        await _context.SaveChangesAsync();
 
-        return idEntity;
+    public async Task<bool> InsertAsync(Scheduling request)
+    {
+        try
+        {
+            await _scheduling.AddAsync(request);
+            var result = await _context.SaveChangesAsync();
+
+            if (result > 0)
+                return true;
+
+            return false;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+
     }
 
     public Task<int> UpdateAsync(Player request)

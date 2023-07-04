@@ -48,7 +48,9 @@ public class MatchRep : IMatchRep
                             {
                                 NumberBalls = match.NumberBalls,
                                 Price = match.Price,
-                                Time = match.Time
+                                Time = match.Time,
+                                isRecharge = match.IsRecharge
+                                
                             }).AsEnumerable();
 
         return matchResponse;

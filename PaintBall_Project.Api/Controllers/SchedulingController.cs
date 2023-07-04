@@ -24,17 +24,17 @@ public class SchedulingController : ControllerBase
 
         var result = await _schedulingService.InsertAsync(request);
 
-        if (result == 0)
+        if (!result.Sucess)
             return BadRequest(result);
 
         return Ok(result);  
     }
     [HttpGet]
-    public async Task<ActionResult> GetDaysAvailableAsync()
+    public async Task<ActionResult> GetDaysAvailableAsync(int mounth, int day)
     {
         var sw = new Stopwatch();
         sw.Start();
-        var result = await _schedulingService.GetAsync();
+        var result = await _schedulingService.GetAsync(mounth, day);
         sw.Stop();
         var time = sw.Elapsed;
 

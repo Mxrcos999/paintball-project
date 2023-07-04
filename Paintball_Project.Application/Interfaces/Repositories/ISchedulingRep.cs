@@ -6,9 +6,10 @@ namespace Paintball_Project.Application.Interfaces.Repositories;
 
 public interface ISchedulingRep
 {
-    Task<int> InsertAsync(Scheduling request);
-    Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync();
+    Task<bool> InsertAsync(Scheduling request);
+    Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync(int mouth, int day);
     Task<int> UpdateAsync(Player request);
     Task<int> DeleteAsync(int id);
+    Task<IEnumerable<Scheduling>> GetAsync();
 } 
 

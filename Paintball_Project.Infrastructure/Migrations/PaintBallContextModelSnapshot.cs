@@ -232,18 +232,21 @@ namespace Paintball_Project.Infrastructure.Migrations
                     b.Property<DateTime>("DateTimeCreating")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("IsRecharge")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("NumberBalls")
                         .HasColumnType("integer");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Time")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("match", (string)null);
+                    b.ToTable("match");
                 });
 
             modelBuilder.Entity("Paintball_Project.Domain.Entities.Player", b =>
@@ -270,7 +273,7 @@ namespace Paintball_Project.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("player", (string)null);
+                    b.ToTable("player");
                 });
 
             modelBuilder.Entity("Paintball_Project.Domain.Entities.Scheduling", b =>
@@ -301,7 +304,7 @@ namespace Paintball_Project.Infrastructure.Migrations
                     b.HasIndex("PlayerId")
                         .IsUnique();
 
-                    b.ToTable("scheduling", (string)null);
+                    b.ToTable("scheduling");
                 });
 
             modelBuilder.Entity("Paintball_Project.Domain.Entities.SchedulingSettings", b =>
@@ -326,7 +329,7 @@ namespace Paintball_Project.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("schedulesettings", (string)null);
+                    b.ToTable("schedulesettings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
