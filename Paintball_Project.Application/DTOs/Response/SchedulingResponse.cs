@@ -7,4 +7,5 @@ public sealed class SchedulingResponse
     public DateTime DateTimeScheduling { get; set; }
     public string Phone { get; set; }
     public int NumberPlayers { get; set; }
+    public int DurationMatch { get; set; }
 }

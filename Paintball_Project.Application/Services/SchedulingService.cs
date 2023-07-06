@@ -28,7 +28,7 @@ public class SchedulingService : ISchedulingService
             {
                 var newPlayer = await CreatePlayerAsync(request.Player);
 
-                var scheduling = SchedulingFactory.Create(newPlayer, request.NumberPlayer, request.DateHourScheduling);
+                var scheduling = SchedulingFactory.Create(newPlayer, request.NumberPlayer, request.DateHourScheduling, request.DurationMatch);
                 var result = await _schedulingRep.InsertAsync(scheduling);
 
                 response.Sucess = result;
