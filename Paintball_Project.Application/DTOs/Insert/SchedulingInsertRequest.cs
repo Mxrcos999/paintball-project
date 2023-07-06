@@ -10,4 +10,5 @@ public sealed class SchedulingInsertRequest
     public int NumberPlayer { get; set; }
     [Required(ErrorMessage = "Informe a data e hora do jogo.")]
     public DateTime DateHourScheduling { get; set; }
+    public int DurationMatch { get; set; }
 }

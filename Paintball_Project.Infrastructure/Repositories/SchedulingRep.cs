@@ -54,16 +54,19 @@ public class SchedulingRep : ISchedulingRep
 
             while (beginHour < endHour)
             {
-                var endHourSlot = beginHour.AddHours(durationMatch);
+                var endHourSlot = beginHour.AddHours(1);
 
-                var totalPlayersHour = schedulings.Where(a => a.DateHourScheduling >= beginHour && a.DateHourScheduling < beginHour.AddHours(durationMatch));
+                var totalPlayersHour = schedulings.Where(a => a.DateHourScheduling >= beginHour && a.DateHourScheduling < beginHour.AddHours(1));
                 var totalPlayers = totalPlayersHour.Sum(a => a.NumberPlayer);
 
                 if (totalPlayersHour.Count() < 3 && totalPlayers < numberPlayer)
                 {
                     availableHours.Add(beginHour.ToString("HH:mm"));
                 }
-                beginHour = beginHour.AddHours(durationMatch);
+                else
+                {
+                    endHourSlot = beginHour.AddHours(totalPlayersHour.Max(x => x.DurationMatch));
+                }
 
                 beginHour = endHourSlot;
             }
