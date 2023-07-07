@@ -62,10 +62,14 @@ public class AzureStorageService : IAzureStorageService
         var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(base64Image, "");
 
         byte[] imageBytes = Convert.FromBase64String(data);
-
+        var header = new BlobHttpHeaders
+        {
+            ContentType = "application/octet-stream",
+            // update as necessary
+        };
         using (var stream = new MemoryStream(imageBytes))
         {
-            var result = await blobClient.UploadAsync(stream);
+            var result = await blobClient.UploadAsync(stream, new BlobUploadOptions { HttpHeaders = header});
         }
     }
 
