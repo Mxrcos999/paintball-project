@@ -1,5 +1,6 @@
 ﻿using Paintball_Project.Application.DTOs.Insert;
 using Paintball_Project.Application.DTOs.Response;
+using Paintball_Project.Application.DTOs.Update;
 using Paintball_Project.Application.Interfaces.Repositories;
 using Paintball_Project.Application.Interfaces.Services;
 using Paintball_Project.Domain.Entities;
@@ -26,9 +27,7 @@ public class SchedulingService : ISchedulingService
 
             if (totalPlayersScheduling <= 40)
             {
-                var newPlayer = await CreatePlayerAsync(request.Player);
-
-                var scheduling = SchedulingFactory.Create(newPlayer, request.NumberPlayer, request.DateHourScheduling, request.DurationMatch);
+                var scheduling = SchedulingFactory.Create(request.NumberPlayer, request.DateHourScheduling, request.DurationMatch, request.Name, request.Phone);
                 var result = await _schedulingRep.InsertAsync(scheduling);
 
                 response.Sucess = result;
@@ -43,27 +42,20 @@ public class SchedulingService : ISchedulingService
         response.AddError("O horario selecionado já contém 3 jogos agendados.");
         return response;
     }
-
-    public Task<int> UpdateAsync(SchedulingInsertRequest request)
+    public async Task<bool> UpdateAsync(SchedulingUpdateRequest request)
     {
-        throw new NotImplementedException();
-    }
+        var scheduling = (await _schedulingRep.GetAsync()).Where(x => x.Id == request.Id).SingleOrDefault();
 
+        scheduling.Alterar(request.NumberPlayer, request.DateHourScheduling, request.DurationMatch, request.Name, request.Phone);
+        return await _schedulingRep.UpdateAsync(scheduling);
+    }
     public async Task<IEnumerable<SchedulingDay>> GetAsync(int mounth, int day)
     {
         return await _schedulingRep.GetAvailableDaysAsync(mounth, day);
     }
-    public Task<int> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _schedulingRep.DeleteAsync(id);
     }
 
-    #region Auxiliary methods
-    private async Task<Player> CreatePlayerAsync(PlayerInsertRequest playerDto)
-    {
-        var player = PlayerFactory.Create(playerDto.Name, playerDto.Phone);
-
-        return player;
-    }
-    #endregion
 }

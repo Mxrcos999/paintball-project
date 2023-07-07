@@ -10,7 +10,6 @@ public class PaintBallContext : IdentityDbContext<ApplicationUser>
     public PaintBallContext(DbContextOptions options) : base(options) {}
     
     public DbSet<Scheduling> scheduling { get; set; }
-    public DbSet<Player> player { get; set; }
     public DbSet<ApplicationUser> user { get; set; }
     public DbSet<SchedulingSettings> schedulesettings { get; set; }
     public DbSet<Match> match { get; set; }

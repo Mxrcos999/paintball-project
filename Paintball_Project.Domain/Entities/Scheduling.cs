@@ -1,32 +1,33 @@
 ﻿using Paintball_Project.Domain.Entities.EntitiesCore;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Paintball_Project.Domain.Entities;
 
 public sealed class Scheduling : EntityCore
 {
-    public int PlayerId { get; private set; }
-    public Player Player { get; private set; }
+    public string Name { get; private set; }
+    public string Phone { get; private set; }
     public int DurationMatch { get; private set; }
     public int NumberPlayer { get; private set; }
     public DateTime DateHourScheduling { get; private set; }
 
     private Scheduling() { }
-    internal Scheduling(Player player, int numberPlayer, DateTime dateHourScheduling, int durationMatch)
+    internal Scheduling(int numberPlayer, DateTime dateHourScheduling, int durationMatch, string name, string phone)
     {
         DateTimeCreating = DateTime.Now.ToUniversalTime();
-        Player = player;
         NumberPlayer = numberPlayer;
         DateHourScheduling = dateHourScheduling;
         DurationMatch = durationMatch;
+        Name = name;
+        Phone = phone;
     }
 
-    public void Alterar(Player player, int numberPlayer, DateTime dateHourScheduling, int durationMatch)
+    public void Alterar(int numberPlayer, DateTime dateHourScheduling, int durationMatch, string name, string phone)
     {
         DateTimeChange = DateTime.Now.ToUniversalTime();
-        Player = player;
         NumberPlayer = numberPlayer;
         DateHourScheduling = dateHourScheduling;
         DurationMatch = durationMatch;
+        Name = name;
+        Phone = phone;
     }
 }

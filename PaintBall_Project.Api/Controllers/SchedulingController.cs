@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Paintball_Project.Application.DTOs.Insert;
+using Paintball_Project.Application.DTOs.Update;
 using Paintball_Project.Application.Interfaces.Services;
 using System.Diagnostics;
 
@@ -32,13 +33,36 @@ public class SchedulingController : ControllerBase
     [HttpGet]
     public async Task<ActionResult> GetDaysAvailableAsync(int mounth, int day)
     {
-        var sw = new Stopwatch();
-        sw.Start();
         var result = await _schedulingService.GetAsync(mounth, day);
-        sw.Stop();
-        var time = sw.Elapsed;
 
         return Ok(result);
+    }
 
+    [HttpPut]
+    public async Task<ActionResult> UpdateAsync([FromBody] SchedulingUpdateRequest request)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(request);
+
+        var result = await _schedulingService.UpdateAsync(request);
+
+        if(!result)
+            return BadRequest(result);
+
+        return Ok(result);
+    }
+
+    [HttpDelete]
+    public async Task<ActionResult> DeleteAsync(int id)
+    {
+        if (id < 1)
+            return BadRequest(id);
+
+        var result = await _schedulingService.DeleteAsync(id);
+
+        if(!result)
+            return BadRequest(result);
+
+        return Ok(result);
     }
 }

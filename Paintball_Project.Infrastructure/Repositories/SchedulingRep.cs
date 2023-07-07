@@ -24,9 +24,18 @@ public class SchedulingRep : ISchedulingRep
         durationMatch = _schedulingSettings.FirstOrDefault().DurationMatch;
     }
 
-    public Task<int> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var scheduling = await _scheduling.FindAsync(id);
+
+        _scheduling.Remove(scheduling);
+
+        var result = await _context.SaveChangesAsync();
+
+        if (result > 0)
+            return true;
+
+        return false;
     }
     public async Task<IEnumerable<Scheduling>> GetAsync()
     {
@@ -101,12 +110,17 @@ public class SchedulingRep : ISchedulingRep
 
             throw;
         }
-
-
     }
 
-    public Task<int> UpdateAsync(Player request)
+    public async Task<bool> UpdateAsync(Scheduling scheduling)
     {
-        throw new NotImplementedException();
+        _scheduling.Update(scheduling);
+
+        var result = await _context.SaveChangesAsync();
+
+        if (result > 0)
+            return true;
+
+        return false;
     }
 }

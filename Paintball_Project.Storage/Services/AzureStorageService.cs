@@ -65,7 +65,7 @@ public class AzureStorageService : IAzureStorageService
 
         using (var stream = new MemoryStream(imageBytes))
         {
-            var result = await blobClient.UploadAsync(stream, true);
+            var result = await blobClient.UploadAsync(stream);
         }
     }
 
