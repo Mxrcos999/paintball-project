@@ -24,8 +24,6 @@ public static class NativeInjectorConfig
         services.AddScoped<ISchedulingService, SchedulingService>();
         services.AddScoped<ISchedulingRep, SchedulingRep>();
         services.AddScoped<IIdentityService, IdentityService>();
-        services.AddScoped<ISchedulingSettingsService, SchedulingSettingsService>();
-        services.AddScoped<ISchedulingSettingsRep, SchedulingSettingRep>();
         services.AddScoped<IAzureStorageService, AzureStorageService>();
         services.AddScoped<IMatchService, MatchService>();
         services.AddScoped<IMatchRep, MatchRep>();

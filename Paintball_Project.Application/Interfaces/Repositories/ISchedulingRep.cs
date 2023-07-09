@@ -9,6 +9,7 @@ public interface ISchedulingRep
     Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync(int mouth, int day);
     Task<bool> UpdateAsync(Scheduling request);
     Task<bool> DeleteAsync(int id);
-    Task<IEnumerable<Scheduling>> GetAsync();
+    Task<IEnumerable<SchedulingResponse>> GetAsync();
+    Task<Scheduling> GetById(int id);
 }
 

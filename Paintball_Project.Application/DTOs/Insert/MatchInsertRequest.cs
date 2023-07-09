@@ -2,8 +2,10 @@
 
 public sealed class MatchInsertRequest
 {
-    public int Time { get; set; }
-    public int NumberBalls { get; set; }
-    public decimal Price { get; set; }
-    public bool isRecharge { get; set; }
+    public int QuantityMaxPlayers { get; set; }
+    public int QuantityMinPlayers { get; set; }
+    public int DurationMatch { get; set; }
+
+    public ICollection<GameDataInsertRequest> GameDatas { get; set; }
+    public ICollection<ChargeDataInsertRequest> ChargeDatas { get; set; }
 }

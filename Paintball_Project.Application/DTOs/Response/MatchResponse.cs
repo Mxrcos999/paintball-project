@@ -1,9 +1,14 @@
-﻿namespace Paintball_Project.Application.DTOs.Response;
+﻿using Paintball_Project.Domain.Entities;
+
+namespace Paintball_Project.Application.DTOs.Response;
 
 public sealed class MatchResponse
 {
-    public int Time { get; set; }
-    public int NumberBalls { get; set; }
-    public decimal Price { get; set; }
-    public bool isRecharge { get; set; }
+    public int Id { get; set; }
+    public int QuantityMaxPlayers { get; set; }
+    public int QuantityMinPlayers { get; set; }
+    public int DurationMatch { get; set; }
+
+    public ICollection<GameData> GameDatas { get; set; }
+    public ICollection<ChargeData> ChargeDatas { get; set; }
 }

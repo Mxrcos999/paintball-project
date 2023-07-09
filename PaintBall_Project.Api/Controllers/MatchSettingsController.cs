@@ -6,12 +6,12 @@ using Paintball_Project.Application.Interfaces.Services;
 namespace PaintBall_Project.Api.Controllers;
 
 [ApiController]
-[Route("/match")]
-public class MatchController : ControllerBase
+[Route("/match_settings")]
+public class MatchSettingsController : ControllerBase
 {
     private readonly IMatchService _matchService;
 
-    public MatchController(IMatchService matchService)
+    public MatchSettingsController(IMatchService matchService)
     {
         _matchService = matchService;
     }

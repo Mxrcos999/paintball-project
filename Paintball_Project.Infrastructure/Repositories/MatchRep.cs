@@ -9,13 +9,13 @@ namespace Paintball_Project.Infrastructure.Repositories;
 public class MatchRep : IMatchRep
 {
     private readonly PaintBallContext _paintBallContext;
-    private readonly DbSet<Match> _match;
+    private readonly DbSet<MatchSettings> _match;
     public MatchRep(PaintBallContext paintBallContext)
     {
         _paintBallContext = paintBallContext;
-        _match = paintBallContext.Set<Match>();
+        _match = paintBallContext.Set<MatchSettings>();
     }
-    public async Task<bool> CreateAsync(Match match)
+    public async Task<bool> CreateAsync(MatchSettings match)
     {
         await _match.AddAsync(match);
 
@@ -25,10 +25,9 @@ public class MatchRep : IMatchRep
             return true;
 
         return false;
-
     }
 
-    public async Task<bool> DeleteAsync(Match match)
+    public async Task<bool> DeleteAsync(MatchSettings match)
     {
         _match.Remove(match);
 
@@ -46,17 +45,16 @@ public class MatchRep : IMatchRep
                             .AsNoTracking()
                             select new MatchResponse()
                             {
-                                NumberBalls = match.NumberBalls,
-                                Price = match.Price,
-                                Time = match.Time,
-                                isRecharge = match.IsRecharge
-                                
+                                Id = match.Id,
+                                QuantityMaxPlayers = match.QuantityMaxPlayers,
+                                QuantityMinPlayers = match.QuantityMinPlayers,
+                                DurationMatch = match.DurationMatch,
                             }).AsEnumerable();
 
         return matchResponse;
     }
 
-    public async Task<bool> UpdateAsync(Match match)
+    public async Task<bool> UpdateAsync(MatchSettings match)
     {
         _match.Update(match);
 
@@ -68,7 +66,7 @@ public class MatchRep : IMatchRep
         return false;
     }
 
-    public async Task<Match> GetById(int id)
+    public async Task<MatchSettings> GetById(int id)
     {
         var match = await _match.FindAsync(id);
 

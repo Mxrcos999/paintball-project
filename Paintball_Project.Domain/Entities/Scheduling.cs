@@ -8,6 +8,7 @@ public sealed class Scheduling : EntityCore
     public string Phone { get; private set; }
     public int DurationMatch { get; private set; }
     public int NumberPlayer { get; private set; }
+
     public DateTime DateHourScheduling { get; private set; }
 
     private Scheduling() { }
