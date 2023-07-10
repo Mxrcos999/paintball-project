@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Paintball_Project.Application\Paintball_Project.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>

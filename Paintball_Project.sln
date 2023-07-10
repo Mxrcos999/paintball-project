@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaintBall_Project.Api", "Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paintball_Project.Storage", "Paintball_Project.Storage\Paintball_Project.Storage.csproj", "{CE5C7242-0927-47BC-8DD9-B69A20EAE74B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paintball_Project.Payments", "Paintball_Project.Payments\Paintball_Project.Payments.csproj", "{32E9B6FC-CA26-48E8-BD34-CB9C19558D3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{CE5C7242-0927-47BC-8DD9-B69A20EAE74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE5C7242-0927-47BC-8DD9-B69A20EAE74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE5C7242-0927-47BC-8DD9-B69A20EAE74B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E9B6FC-CA26-48E8-BD34-CB9C19558D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E9B6FC-CA26-48E8-BD34-CB9C19558D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E9B6FC-CA26-48E8-BD34-CB9C19558D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E9B6FC-CA26-48E8-BD34-CB9C19558D3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
