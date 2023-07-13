@@ -27,6 +27,10 @@ public static class NativeInjectorConfig
         services.AddScoped<IAzureStorageService, AzureStorageService>();
         services.AddScoped<IMatchService, MatchService>();
         services.AddScoped<IMatchRep, MatchRep>();
+        services.AddScoped<IChargeDataRep, ChargeDataRep>();
+        services.AddScoped<IChargeDataService, ChargeDataService>(); 
+        services.AddScoped<IGameDataRep, GameDataRep>();
+        services.AddScoped<IGameDataService, GameDataService>();
 
         string storageAccountName = "paintballstorage";
         string storageAccountKey = "rqKu/8zhwe7fZRUojXPB1Emi9byiA8WGMkjYWEG8NnWvGzFMlk/4CL1y2KBmuKOjCEh/6n08WxBi+ASt+AaUTA==";

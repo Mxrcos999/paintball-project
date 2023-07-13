@@ -9,11 +9,12 @@ public class GameData : EntityCore
     public int Time { get; private set; }
     public MatchSettings MatchSettings { get; private set; }
     public int MatchSettingsId { get; set; }
-    internal GameData(decimal price, int numberBalls, int time)
+    internal GameData(decimal price, int numberBalls, int time, MatchSettings match)
 	{
         Price = price;
         NumberBalls = numberBalls;
         Time = time;
+        MatchSettings = match;
 	}
 	private GameData() { }
 

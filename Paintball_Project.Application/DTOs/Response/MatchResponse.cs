@@ -7,8 +7,8 @@ public sealed class MatchResponse
     public int Id { get; set; }
     public int QuantityMaxPlayers { get; set; }
     public int QuantityMinPlayers { get; set; }
-    public int DurationMatch { get; set; }
+    public List<int> DurationMatch { get; set; } = new List<int>();
 
-    public ICollection<GameData> GameDatas { get; set; }
-    public ICollection<ChargeData> ChargeDatas { get; set; }
+    public ICollection<GameDataResponse> GameDatas { get; set; }
+    public ICollection<ChargeDataResponse> ChargeDatas { get; set; }
 }

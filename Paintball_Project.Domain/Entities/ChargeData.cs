@@ -9,10 +9,11 @@ public sealed class ChargeData : EntityCore
     public MatchSettings MatchSettings { get; private set; }
     public int MatchSettingsId { get; set; }
 
-    internal ChargeData(decimal price, int numberBalls)
+    internal ChargeData(decimal price, int numberBalls, MatchSettings matchSettings)
     {
         Price = price;
         NumberBalls = numberBalls;
+        MatchSettings = matchSettings;
     }
 
     private ChargeData() { }

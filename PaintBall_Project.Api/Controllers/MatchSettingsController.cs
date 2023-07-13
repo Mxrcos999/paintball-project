@@ -16,34 +16,10 @@ public class MatchSettingsController : ControllerBase
         _matchService = matchService;
     }
 
-    [HttpPost]
-    public async Task<ActionResult> InsertAsync([FromBody] MatchInsertRequest model)
-    {
-        if(!ModelState.IsValid) { return BadRequest(model); }
-
-        var result = await _matchService.CreateAsync(model);
-
-        if(result)
-            return Ok();
-
-        return BadRequest();
-    }
-
     [HttpGet]
     public async Task<ActionResult> GetAsync()
     {
         return Ok(await _matchService.GetAsync());
-    }
-
-    [HttpDelete]
-    public async Task<ActionResult> DeleteAsync(int id)
-    {
-        var result = await _matchService.DeleteAsync(id);
-
-        if (result)
-            return Ok();
-
-        return BadRequest();
     }
 
     [HttpPut]

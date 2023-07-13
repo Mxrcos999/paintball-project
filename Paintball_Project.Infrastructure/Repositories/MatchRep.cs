@@ -39,17 +39,32 @@ public class MatchRep : IMatchRep
         return false;
     }
 
-    public async Task<IEnumerable<MatchResponse>> GetAsync()
+    public async Task<MatchResponse> GetAsync()
     {
         var matchResponse = (from match in _match
                             .AsNoTracking()
+                            .Include(x => x.ChargeDatas)
+                            .Include(x => x.GameDatas)
                             select new MatchResponse()
                             {
                                 Id = match.Id,
                                 QuantityMaxPlayers = match.QuantityMaxPlayers,
                                 QuantityMinPlayers = match.QuantityMinPlayers,
-                                DurationMatch = match.DurationMatch,
-                            }).AsEnumerable();
+                                ChargeDatas = match.ChargeDatas.Select(chargeData => new ChargeDataResponse()
+                                {
+                                    Id = chargeData.Id,
+                                    NumberBalls = chargeData.NumberBalls,
+                                    Price = chargeData.Price
+                                }).ToList(),
+                                GameDatas = match.GameDatas.Select(gameDatas => new GameDataResponse()
+                                {
+                                    Id = gameDatas.Id,
+                                    Price = gameDatas.Price,
+                                    NumberBalls = gameDatas.NumberBalls,
+                                    Time = gameDatas.Time
+                                }).ToList()
+                            }).FirstOrDefault();
+   
 
         return matchResponse;
     }
