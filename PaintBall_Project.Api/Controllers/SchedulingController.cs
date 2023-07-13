@@ -30,10 +30,24 @@ public class SchedulingController : ControllerBase
 
         return Ok(result);  
     }
+
     [HttpGet]
+    [Route("/Scheduling/GetDaysAvailable")]
     public async Task<ActionResult> GetDaysAvailableAsync(int mounth, int day)
     {
-        var result = await _schedulingService.GetAsync(mounth, day);
+        var result = await _schedulingService.GetAvaliableDaysAsync(mounth, day);
+
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("/Scheduling/GetScheduling")]
+    public async Task<ActionResult> GetAllAsync()
+    {
+        var result = await _schedulingService.GetSchedulingAsync();
+
+        if (result is null)
+            return BadRequest(result);
 
         return Ok(result);
     }

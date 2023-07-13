@@ -3,7 +3,7 @@
 public sealed class MatchUpdateRequest
 {
     public int Id { get; set; }
-    public int Time { get; set; }
-    public int NumberBalls { get; set; }
-    public decimal Price { get; set; }
+    public int QuantityMaxPlayers { get; set; }
+    public int QuantityMinPlayers { get; set; }
+    public int DurationMatch { get; set; }
 }

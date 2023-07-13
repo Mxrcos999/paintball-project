@@ -218,7 +218,7 @@ namespace Paintball_Project.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Paintball_Project.Domain.Entities.Match", b =>
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.ChargeData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -232,8 +232,38 @@ namespace Paintball_Project.Infrastructure.Migrations
                     b.Property<DateTime>("DateTimeCreating")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("IsRecharge")
-                        .HasColumnType("boolean");
+                    b.Property<int>("MatchSettingsId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("NumberBalls")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MatchSettingsId");
+
+                    b.ToTable("chargedata");
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.GameData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateTimeChange")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateTimeCreating")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("MatchSettingsId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("NumberBalls")
                         .HasColumnType("integer");
@@ -246,7 +276,37 @@ namespace Paintball_Project.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("match");
+                    b.HasIndex("MatchSettingsId");
+
+                    b.ToTable("gamedata");
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.MatchSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateTimeChange")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DateTimeCreating")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("DurationMatch")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuantityMaxPlayers")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuantityMinPlayers")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("matchsettings");
                 });
 
             modelBuilder.Entity("Paintball_Project.Domain.Entities.Scheduling", b =>
@@ -283,31 +343,6 @@ namespace Paintball_Project.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("scheduling");
-                });
-
-            modelBuilder.Entity("Paintball_Project.Domain.Entities.SchedulingSettings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateTimeChange")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateTimeCreating")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("DurationMatch")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("NumberPlayer")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("schedulesettings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -359,6 +394,35 @@ namespace Paintball_Project.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.ChargeData", b =>
+                {
+                    b.HasOne("Paintball_Project.Domain.Entities.MatchSettings", "MatchSettings")
+                        .WithMany("ChargeDatas")
+                        .HasForeignKey("MatchSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MatchSettings");
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.GameData", b =>
+                {
+                    b.HasOne("Paintball_Project.Domain.Entities.MatchSettings", "MatchSettings")
+                        .WithMany("GameDatas")
+                        .HasForeignKey("MatchSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MatchSettings");
+                });
+
+            modelBuilder.Entity("Paintball_Project.Domain.Entities.MatchSettings", b =>
+                {
+                    b.Navigation("ChargeDatas");
+
+                    b.Navigation("GameDatas");
                 });
 #pragma warning restore 612, 618
         }

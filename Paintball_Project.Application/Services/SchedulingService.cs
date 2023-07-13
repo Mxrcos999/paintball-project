@@ -15,14 +15,15 @@ public class SchedulingService : ISchedulingService
     {
         _schedulingRep = schedulingRep;
     }
+
     public async Task<DefaultResponse> InsertAsync(SchedulingInsertRequest request)
     {
         var response = new DefaultResponse();
 
-        var schedulings = (await _schedulingRep.GetAsync()).Where(wh => wh.DateHourScheduling == request.DateHourScheduling);
+        var schedulings = (await _schedulingRep.GetAsync()).Where(wh => wh.DateTimeScheduling == request.DateHourScheduling);
         if(schedulings.Count() < 3)
         {
-            var totalPlayers = schedulings?.Sum(s => s.NumberPlayer);
+            var totalPlayers = schedulings?.Sum(s => s.NumberPlayers);
             var totalPlayersScheduling = totalPlayers + request.NumberPlayer;
 
             if (totalPlayersScheduling <= 40)
@@ -44,12 +45,12 @@ public class SchedulingService : ISchedulingService
     }
     public async Task<bool> UpdateAsync(SchedulingUpdateRequest request)
     {
-        var scheduling = (await _schedulingRep.GetAsync()).Where(x => x.Id == request.Id).SingleOrDefault();
+        var scheduling = await _schedulingRep.GetById(request.Id);
 
         scheduling.Alterar(request.NumberPlayer, request.DateHourScheduling, request.DurationMatch, request.Name, request.Phone);
         return await _schedulingRep.UpdateAsync(scheduling);
     }
-    public async Task<IEnumerable<SchedulingDay>> GetAsync(int mounth, int day)
+    public async Task<IEnumerable<SchedulingDay>> GetAvaliableDaysAsync(int mounth, int day)
     {
         return await _schedulingRep.GetAvailableDaysAsync(mounth, day);
     }
@@ -58,4 +59,8 @@ public class SchedulingService : ISchedulingService
         return await _schedulingRep.DeleteAsync(id);
     }
 
+    public Task<IEnumerable<SchedulingResponse>> GetSchedulingAsync()
+    {
+        return _schedulingRep.GetAsync();
+    }
 }

@@ -10,9 +10,10 @@ public class PaintBallContext : IdentityDbContext<ApplicationUser>
     public PaintBallContext(DbContextOptions options) : base(options) {}
     
     public DbSet<Scheduling> scheduling { get; set; }
+    public DbSet<GameData> gamedata { get; set; }
+    public DbSet<ChargeData> chargedata { get; set; }
     public DbSet<ApplicationUser> user { get; set; }
-    public DbSet<SchedulingSettings> schedulesettings { get; set; }
-    public DbSet<Match> match { get; set; }
+    public DbSet<MatchSettings> matchsettings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

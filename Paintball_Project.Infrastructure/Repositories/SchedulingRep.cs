@@ -11,17 +11,15 @@ public class SchedulingRep : ISchedulingRep
 {
     private readonly PaintBallContext _context;
     private readonly DbSet<Scheduling> _scheduling;
-    private readonly DbSet<SchedulingSettings> _schedulingSettings;
+    private readonly DbSet<MatchSettings> _matchSettings;
     private readonly int numberPlayer;
-    private readonly int durationMatch;
 
     public SchedulingRep(PaintBallContext context)
     {
         _context = context;
         _scheduling = context.Set<Scheduling>();
-        _schedulingSettings = context.Set<SchedulingSettings>();
-        numberPlayer = _schedulingSettings.FirstOrDefault().NumberPlayer;
-        durationMatch = _schedulingSettings.FirstOrDefault().DurationMatch;
+        _matchSettings = context.Set<MatchSettings>();
+        numberPlayer = _matchSettings.FirstOrDefault().QuantityMaxPlayers;
     }
 
     public async Task<bool> DeleteAsync(int id)
@@ -37,9 +35,22 @@ public class SchedulingRep : ISchedulingRep
 
         return false;
     }
-    public async Task<IEnumerable<Scheduling>> GetAsync()
+    public async Task<IEnumerable<SchedulingResponse>> GetAsync()
     {
-        return _scheduling.AsEnumerable();
+        var result = (from scheduling in _scheduling
+                      .AsNoTracking()
+                      select new SchedulingResponse()
+                      {
+                          Id = scheduling.Id,
+                          DateTimeRegistration = scheduling.DateTimeCreating,
+                          DateTimeScheduling = scheduling.DateHourScheduling,
+                          DurationMatch = scheduling.DurationMatch,
+                          NumberPlayers = scheduling.NumberPlayer,
+                          Phone = scheduling.Phone,
+                          PlayerName = scheduling.Name
+                      }).AsEnumerable();
+
+        return result;
     }
     public async Task<IEnumerable<SchedulingDay>> GetAvailableDaysAsync(int mouth, int day)
     {
@@ -91,8 +102,6 @@ public class SchedulingRep : ISchedulingRep
 
         return daysTimesAvailable;
     }
-
-
     public async Task<bool> InsertAsync(Scheduling request)
     {
         try
@@ -111,7 +120,6 @@ public class SchedulingRep : ISchedulingRep
             throw;
         }
     }
-
     public async Task<bool> UpdateAsync(Scheduling scheduling)
     {
         _scheduling.Update(scheduling);
@@ -122,5 +130,9 @@ public class SchedulingRep : ISchedulingRep
             return true;
 
         return false;
+    }
+    public async Task<Scheduling> GetById (int id)
+    {
+        return await _scheduling.FindAsync(id);
     }
 }

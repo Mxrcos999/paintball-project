@@ -65,7 +65,6 @@ public class AzureStorageService : IAzureStorageService
         var header = new BlobHttpHeaders
         {
             ContentType = "application/octet-stream",
-            // update as necessary
         };
         using (var stream = new MemoryStream(imageBytes))
         {
